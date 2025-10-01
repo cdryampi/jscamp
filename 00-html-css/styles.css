@@ -260,19 +260,17 @@ main {
 .hero {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
+  justify-content: center;
   max-width: var(--max-width-hero);
-  min-height: 60vh;
+  min-height: 1000px;
+  max-height: 1250px;
   border-radius: var(--radius-lg);
-  padding: var(--space-9) var(--space-8);
-  gap: var(--space-6);
-  margin: 2rem auto;
+  padding: var(--space-8) var(--space-8);
+  gap: var(--space-8);
+  margin-top: 2rem;
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(10px);
 }
 
 .hero::before {
@@ -282,105 +280,24 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("./img/indio_mayor.jpg");
+  background-image: url("./img/español_y_un_indio.png");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  filter: blur(1px) contrast(0.8) brightness(0.7);
-  z-index: -2;
-}
-
-/* Overlay oscuro para mejor legibilidad */
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.2) 50%,
-    rgba(236, 73, 19, 0.1) 100%
-  );
+  filter: blur(2px) contrast(0.9) brightness(0.9);
   z-index: -1;
 }
-
 .hero h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 700;
+  font-size: 2.5rem;
   color: var(--white);
   margin-bottom: var(--space-4);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
 }
-
 .hero p {
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-size: 1.25rem;
   color: var(--white);
-  margin-bottom: var(--space-6);
-  max-width: 600px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  line-height: 1.6;
-  font-weight: 400;
+  margin-bottom: var(--space-4);
 }
-
 .hero button {
   font-size: 1.25rem;
-  font-weight: 600;
-  padding: var(--space-4) var(--space-6);
-  background: linear-gradient(
-    135deg,
-    var(--brand) 0%,
-    var(--brand-strong) 100%
-  );
-  border: 2px solid transparent;
-  border-radius: var(--radius-md);
-  color: var(--white);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 8px 25px rgba(236, 73, 19, 0.3);
-}
-
-.hero button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(236, 73, 19, 0.4);
-  background: linear-gradient(
-    135deg,
-    var(--brand-strong) 0%,
-    var(--brand) 100%
-  );
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Hero responsive */
-@media screen and (max-width: 768px) {
-  .hero {
-    min-height: 50vh;
-    padding: var(--space-6) var(--space-4);
-    margin: 1rem auto;
-  }
-
-  .hero::before {
-    background-attachment: scroll;
-  }
-
-  .hero button {
-    font-size: 1rem;
-    padding: var(--space-3) var(--space-5);
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .hero {
-    min-height: 40vh;
-    padding: var(--space-5) var(--space-3);
-    gap: var(--space-4);
-  }
 }
 /* end hero */
 /* Manifest */
@@ -497,13 +414,7 @@ footer p {
 
 /* Patrón Quechua con + */
 .quechua-pattern {
-  background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ec4913" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -10;
-  pointer-events: none;
-  opacity: 0.6;
+  background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ec4913" fill-opacity="0.1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  position: absolute;
+  inset: 0;
 }
