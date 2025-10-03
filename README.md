@@ -25,4 +25,6 @@ multimedia:
 - [] Maquetar recursos.html
 - [] Maquetar multimedia.html
 
-- probando commits para probar el n8n y su integración con GitHub mediante webhooks intento 2
+## Notas:
+
+- Para la integración del Webhook de GitHub con n8n, se ha seguido el tutorial oficial: https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.github/ y se ha utilizado un servidor en la nube para alojar n8n y permitir que GitHub envíe eventos a n8n.
