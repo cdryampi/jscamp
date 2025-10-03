@@ -6,5 +6,14 @@ Resolución de los ejercicios propuestos en el JSCamp de InfoJobs.
 
 ![Ejercicio práctico](./docs/img/diseño.png)
 
-Resultado provisional:
+## Resultado provisional:
+
+index:
 ![Resultado provisional](./docs/img/resultado_primera_version.png)
+eventos:
+
+quechua:
+
+recursos:
+
+multimedia:
