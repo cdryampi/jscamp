@@ -25,4 +25,4 @@ multimedia:
 - [] Maquetar recursos.html
 - [] Maquetar multimedia.html
 
-- probando commits para probar el n8n y su integración con GitHub mediante webhooks intento 1
+- probando commits para probar el n8n y su integración con GitHub mediante webhooks intento 2
