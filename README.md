@@ -17,3 +17,10 @@ quechua:
 recursos:
 
 multimedia:
+
+# TODO
+
+- [] Maquetar eventos.html
+- [] Maquetar quechua.html
+- [] Maquetar recursos.html
+- [] Maquetar multimedia.html
