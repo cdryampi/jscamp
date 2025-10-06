@@ -549,9 +549,83 @@ section .card-item img {
   color: white;
   font-weight: 700;
 }
-
 /* fin del calendario */
+/* galería */
+.content-section-gallery h3 {
+  text-align: left !important;
+  align-self: flex-start !important;
+  margin-bottom: var(--space-4);
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+}
 
+.gallery img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.content-section-past-events h3 {
+  text-align: left !important;
+  align-self: flex-start !important;
+  margin-bottom: var(--space-4);
+}
+
+.content-section-past-events .past-event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  width: 100%;
+  place-content: center;
+  place-items: center;
+}
+
+.past-event-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+.content-section-testimonials h3 {
+  text-align: left !important;
+  align-self: flex-start !important;
+  margin-bottom: var(--space-4);
+}
+.content-section-testimonials .testimonial-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-8);
+  width: 100%;
+  place-content: center;
+  place-items: center;
+}
+.testimonial-item img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-md);
+}
+.testimonial-item .testimonial-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.testimonial-text span {
+  font-style: italic;
+  color: var(--text-muted);
+}
+.testimonial-text button {
+  align-self: start;
+}
 /*aside*/
 aside {
   display: flex;
