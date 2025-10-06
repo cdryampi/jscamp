@@ -257,7 +257,7 @@ main {
   position: relative;
 }
 /* hero */
-.hero {
+.hero.index {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -273,19 +273,20 @@ main {
   overflow: hidden;
 }
 
-.hero::before {
+.hero.index::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("./img/español_y_un_indio.png");
+  background-image: url("../img/español_y_un_indio.png");
   background-size: cover;
   background-position: center;
   filter: blur(2px) contrast(0.9) brightness(0.9);
   z-index: -1;
 }
+
 .hero h2 {
   font-size: 2.5rem;
   color: var(--white);
@@ -299,6 +300,32 @@ main {
 .hero button {
   font-size: 1.25rem;
 }
+.hero h2.bottom {
+  font-size: 2.5rem;
+  color: var(--white);
+  margin-top: var(--space-4);
+}
+/* hero quechua */
+
+.hero img.min-width {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.hero.hero-relative {
+  position: relative;
+}
+
+.hero.hero-relative h2.bottom {
+  position: absolute;
+  bottom: 1rem;
+  padding: var(--space-2) var(--space-4);
+  font-size: 1.5rem;
+}
+
 /* end hero */
 /* Manifest */
 .manifest-container {
@@ -308,6 +335,21 @@ main {
   gap: var(--space-6);
   max-width: var(--max-width-hero);
   text-align: center;
+}
+
+.manifest-container h2.start {
+  align-self: start !important;
+}
+.manifest-container p.start {
+  align-self: start !important;
+  text-align: left !important;
+}
+.manifest-container img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
 }
 
 section .card-container {

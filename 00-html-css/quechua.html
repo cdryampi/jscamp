@@ -1,9 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quechua</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>quechua</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div class="header-logo">
+        <div class="logo">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 64 64"
+            width="64"
+            height="64"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+            role="img"
+            aria-label="Poncho"
+          >
+            <!-- Contorno del poncho -->
+            <path d="M12 12 L32 60 L52 12 Z" fill="none" />
+
+            <!-- Abertura para la cabeza -->
+            <circle cx="32" cy="16" r="5" fill="none" />
+
+            <!-- Motivos en zigzag -->
+            <path d="M16 28 l4 4 4-4 4 4 4-4 4 4 4-4 4 4 4-4 4 4" />
+            <path d="M20 38 l4 4 4-4 4 4 4-4 4 4 4-4 4 4" />
+          </svg>
+        </div>
+        <h1>Día del indio</h1>
+      </div>
+      <div class="header-nav">
+        <nav>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Cultura Quechua</a></li>
+            <li><a href="#">Eventos</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div>
+        <ul class="header-actions">
+          <li>
+            <button>
+              <svg
+                fill="currentColor"
+                height="20px"
+                viewBox="0 0 256 256"
+                width="20px"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM101.63,168h52.74C149,186.34,140,202.87,128,215.89,116,202.87,107,186.34,101.63,168ZM98,152a145.72,145.72,0,0,1,0-48h60a145.72,145.72,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.79a161.79,161.79,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154.37,88H101.63C107,69.66,116,53.13,128,40.11,140,53.13,149,69.66,154.37,88Zm19.84,16h38.46a88.15,88.15,0,0,1,0,48H174.21a161.79,161.79,0,0,0,0-48Zm32.16-16H170.94a142.39,142.39,0,0,0-20.26-45A88.37,88.37,0,0,1,206.37,88ZM105.32,43A142.39,142.39,0,0,0,85.06,88H49.63A88.37,88.37,0,0,1,105.32,43ZM49.63,168H85.06a142.39,142.39,0,0,0,20.26,45A88.37,88.37,0,0,1,49.63,168Zm101.05,45a142.39,142.39,0,0,0,20.26-45h35.43A88.37,88.37,0,0,1,150.68,213Z"
+                ></path>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button>
+              <!-- Icono: Chullo Quechua -->
+              <svg
+                height="20"
+                viewBox="0 0 24 24"
+                role="img"
+                aria-label="Gorro quechua (chullo)"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <!-- Cúpula -->
+                <path d="M4 10.5q4-6.5 8-6.5t8 6.5" />
+                <!-- Banda -->
+                <rect x="5" y="12" width="14" height="3" rx="1" />
+                <!-- Motivo zigzag simple en la banda -->
+                <path
+                  d="M6 13.5l1.2-1 1.2 1 1.2-1 1.2 1 1.2-1 1.2 1 1.2-1 1.2 1"
+                />
+                <!-- Orejeras -->
+                <path d="M6.5 15c-.8 2.2-.6 3.7 1.2 4.8 1 .6 2.2.6 3.3-.2" />
+                <path d="M17.5 15c.8 2.2.6 3.7-1.2 4.8-1 .6-2.2.6-3.3-.2" />
+                <!-- Borlas -->
+                <circle cx="9.5" cy="20.2" r="0.9" />
+                <circle cx="14.5" cy="20.2" r="0.9" />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div class="quechua-pattern"></div>
+      <section>
+        <div class="hero hero-relative">
+          <img
+            src="./img/quechua/quechua.png"
+            alt="quechua"
+            srcset=""
+            class="min-width"
+          />
+          <h2 class="bottom">La cultura Quechua es una herencia viva</h2>
+        </div>
+      </section>
+      <section>
+        <div class="manifest-container">
+          <h2 class="start">Historia</h2>
+          <p class="start">
+            La etnia Quechua, originaria de los Andes, tiene una rica historia
+            que se remonta a la época del Imperio Inca. A lo largo de los
+            siglos, han mantenido sus tradiciones, idioma y formas de vida, a
+            pesar de los desafíos y cambios impuestos por la colonización y la
+            modernidad.
+          </p>
+          <img
+            src="./img/quechua/historia.png"
+            alt="Historia Quechua"
+            srcset=""
+          />
+        </div>
+      </section>
+      <section>
+        <div class="manifest-container">
+          <h2 class="start">Cultura Quechua</h2>
+          <p class="start">
+            La cultura Quechua es rica en tradiciones, música, danza y
+            artesanía. Sus festivales, como Inti Raymi, celebran la conexión con
+            la naturaleza y los ciclos agrícolas. La vestimenta tradicional,
+            como el poncho y el chullo, refleja su identidad cultural y su
+            relación con el entorno.
+          </p>
+          <img
+            src="./img/quechua/cultura.png"
+            alt="Historia Quechua"
+            srcset=""
+          />
+        </div>
+      </section>
+      <section>
+        <div class="manifest-container">
+          <h2 class="start">tradiciones</h2>
+          <p class="start">
+            Las tradiciones Quechua incluyen prácticas agrícolas ancestrales,
+            como la siembra y cosecha en terrazas, así como rituales para honrar
+            a la Pachamama (Madre Tierra). La música y la danza son elementos
+            esenciales en sus celebraciones, transmitiendo historias y valores
+            de generación en generación.
+          </p>
+          <img
+            src="./img/quechua/traditions.png"
+            alt="Historia Quechua"
+            srcset=""
+          />
+        </div>
+      </section>
+      <section>
+        <div class="manifest-container">
+          <h2 class="start">Situación Actual</h2>
+          <p class="start">
+            La comunidad Quechua enfrenta desafíos modernos, incluyendo la
+            preservación de su idioma y tradiciones en un mundo globalizado. Sin
+            embargo, continúan luchando por sus derechos y promoviendo su
+            cultura a través de diversas iniciativas.
+          </p>
+          <img
+            src="./img/quechua/current_situation.png"
+            alt="Historia Quechua"
+            srcset=""
+          />
+        </div>
+      </section>
+      <aside>
+        <h2>Actividades y Eventos</h2>
+        <p>
+          Participa en talleres de tejido, música tradicional y charlas sobre la
+          cosmovisión Quechua. Consulta nuestro calendario de eventos para más
+          detalles.
+        </p>
+        <button>Ver Calendario de Eventos</button>
+      </aside>
+    </main>
+    <footer>
+      <nav>
+        <ul>
+          <li>
+            <a href="#">Inicio</a>
+          </li>
+          <li>
+            <a href="#">Sobre nosotros</a>
+          </li>
+          <li>
+            <a href="#">Cultura Quechua</a>
+          </li>
+          <li>
+            <a href="#">Eventos</a>
+          </li>
+          <li>
+            <a href="#">Contacto</a>
+          </li>
+        </ul>
+      </nav>
+      <ul class="social-media">
+        <li>
+          <a href="#"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="30"
+              height="30"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              role="img"
+              aria-label="Twitter"
+            >
+              <path
+                d="M22 5.8c-.7.3-1.4.5-2.2.6.8-.5 1.3-1.2 1.6-2-.8.5-1.7.9-2.6 1.1A3.7 3.7 0 0 0 12 7.9c0 .3 0 .6.1.9-3-.2-5.7-1.6-7.6-3.7-.3.6-.5 1.2-.5 1.9 0 1.3.7 2.5 1.8 3.2-.6 0-1.1-.2-1.6-.4v.1c0 1.9 1.3 3.5 3.1 3.9-.3.1-.7.1-1 .1-.3 0-.5 0-.8-.1.5 1.6 2 2.8 3.8 2.9A7.5 7.5 0 0 1 2 18.3a10.5 10.5 0 0 0 5.7 1.7c6.8 0 10.6-5.7 10.6-10.6v-.5c.7-.5 1.4-1.1 1.9-1.8z"
+              />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="30"
+              height="30"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              role="img"
+              aria-label="Instagram"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4.2" />
+              <circle
+                cx="17.2"
+                cy="6.8"
+                r="1.1"
+                fill="currentColor"
+                stroke="none"
+              />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="#"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="30"
+              height="30"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              role="img"
+              aria-label="Facebook"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path
+                d="M13.5 8.5h2V6.2c-.6-.1-1.4-.2-2.1-.2-2 0-3.4 1.2-3.4 3.5v2h-2v2.5h2V20h2.6v-6h2.1l.4-2.5h-2.5v-1.5c0-.7.3-1 1-1Z"
+              />
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <p>&copy; 2025 Día del Indio. Todos los derechos reservados.</p>
+    </footer>
+  </body>
 </html>
