@@ -626,6 +626,141 @@ section .card-item img {
 .testimonial-text button {
   align-self: start;
 }
+
+/* activismo */
+
+.activismo-section,
+.section-colaboradores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  width: 100%;
+  padding: var(--space-4);
+  max-width: 100vw;
+}
+
+.section-colaboradores {
+  background-color: var(--brand-ultra-soft);
+  border-radius: var(--radius-md);
+}
+.hero.index.activismo {
+  min-height: 350px;
+  max-height: 650px;
+}
+
+.hero.index.activismo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../img/quechua/current_situation.png");
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px) contrast(0.9) brightness(0.9);
+  z-index: -1;
+}
+
+.activismo-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  width: 100%;
+  max-width: 100%;
+  margin-top: var(--space-4);
+}
+.activismo-card {
+  border: 1px solid var(--brand-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  gap: var(--space-4);
+}
+.activismo-container .img-container {
+  width: 100%;
+  max-width: 5rem;
+  height: auto;
+  margin: 0 auto;
+  background-color: var(--brand-ultra-soft);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+.activismo-container svg {
+  width: 100%;
+  height: auto;
+  max-height: 50px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  color: var(--brand-strong);
+}
+
+.fundaciones-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 100%;
+  margin-top: var(--space-4);
+}
+.fundaciones-container .content-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  place-content: center;
+  place-items: center;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+  padding: var(--space-4);
+}
+.fundaciones-container .content-card img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+.fundaciones-container .content-card .button-container {
+  margin-top: var(--space-4);
+  display: inline-flex;
+  justify-content: right;
+  width: 100%;
+  grid-area: 2 / 2 / 3 / 3;
+}
+.fundaciones-container .content-card .button-container button {
+  font-size: 1rem;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.fundaciones-container .content-card .button-container button::after {
+  content: "→";
+  margin-left: var(--space-2);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .activismo-container {
+    grid-template-columns: 1fr;
+  }
+  .fundaciones-container {
+    grid-template-columns: 1fr;
+  }
+}
 /*aside*/
 aside {
   display: flex;
