@@ -20,10 +20,13 @@ multimedia:
 
 # TODO
 
-- [] Maquetar eventos.html
-- [] Maquetar quechua.html
-- [] Maquetar recursos.html
-- [] Maquetar multimedia.html
+- [x] Maquetar eventos.html
+- [x] Maquetar quechua.html
+- [x] Maquetar recursos.html
+- [x] Maquetar multimedia.html
+- [x] Añadir estilos CSS
+- [x] Añadir la sección del contacto.
+- [x] Revisar si la web es racista o hiriente con la indiada.
 
 ## Notas:
 
