@@ -31,3 +31,11 @@ multimedia:
 ## Notas:
 
 - Para la integración del Webhook de GitHub con n8n, se ha seguido el tutorial oficial: https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.github/ y se ha utilizado un servidor en la nube para alojar n8n y permitir que GitHub envíe eventos a n8n.
+
+
+## Ejercicios adicionales:
+- Hacer funcionar las card como webcomponents.
+- modificar los datos de eventos.json una array el `tipo` para pensar mejor el filtro.
+- Darle una vuelta al filtro por titulo.
+- Añadir un funcionalidad a la card de evento para poder marcar como `visitado` o `favorito`.
+- Mejorar la paginación de los eventos.
