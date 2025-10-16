@@ -1,0 +1,83 @@
+[
+    {
+        "id": 1,
+        "titulo": "Charla: cosmovisión Quechua",
+        "descripcion": "Disfruta de una jornada llena de música tradicional andina con artistas invitados de Perú, Bolivia y Ecuador.",
+        "imagen": "./img/eventos/taller_cosmovision.png",
+        "fecha": "2024-07-05",
+        "tipo": "charla",
+        "ubicacion": "madrid"
+    },
+    {
+        "id": 2,
+        "titulo": "Taller de Música Andina",
+        "descripcion": "Participa en un taller práctico de música andina, donde aprenderás sobre los instrumentos tradicionales.",
+        "imagen": "./img/eventos/taller_musica_andina.png",
+        "fecha": "2024-07-10",
+        "tipo": "taller",
+        "ubicacion": "barcelona"
+    },
+    {
+        "id": 3,
+        "titulo": "Proyección Documental",
+        "descripcion": "Descubre la historia y cultura a través de documentales sobre los pueblos indígenas de América Latina.",
+        "imagen": "./img/eventos/taller_cosmovision.png",
+        "fecha": "2024-07-15",
+        "tipo": "cultural",
+        "ubicacion": "madrid"
+    },
+    {
+        "id": 4,
+        "titulo": "Mercado Artesanal Quechua",
+        "descripcion": "Encuentra piezas únicas de artesanía tradicional. Textiles, cerámicas y arte hecho a mano.",
+        "imagen": "./img/eventos/taller_musica_andina.png",
+        "fecha": "2024-07-20",
+        "tipo": "mercado",
+        "ubicacion": "valencia"
+    },
+    {
+        "id": 5,
+        "titulo": "Danza y Música en Vivo",
+        "descripcion": "Disfruta de espectáculos de música y danza andina. Artistas de Perú, Bolivia y Ecuador.",
+        "imagen": "./img/eventos/taller_cosmovision.png",
+        "fecha": "2024-07-25",
+        "tipo": "musical",
+        "ubicacion": "madrid"
+    },
+    {
+        "id": 6,
+        "titulo": "Taller de Idioma Quechua",
+        "descripcion": "Iniciación al idioma quechua para principiantes. Aprende frases básicas y la estructura del idioma.",
+        "imagen": "./img/eventos/taller_musica_andina.png",
+        "fecha": "2024-08-01",
+        "tipo": "taller",
+        "ubicacion": "barcelona"
+    },
+    {
+        "id": 7,
+        "titulo": "Exposición de Arte Indígena",
+        "descripcion": "Muestra de arte contemporáneo y tradicional de artistas indígenas de toda América Latina.",
+        "imagen": "./img/eventos/taller_cosmovision.png",
+        "fecha": "2024-08-05",
+        "tipo": "cultural",
+        "ubicacion": "sevilla"
+    },
+    {
+        "id": 8,
+        "titulo": "Festival Gastronómico Andino",
+        "descripcion": "Degusta los sabores de la cocina andina preparada por chefs especializados en gastronomía tradicional.",
+        "imagen": "./img/eventos/taller_musica_andina.png",
+        "fecha": "2024-08-10",
+        "tipo": "gastronomico",
+        "ubicacion": "madrid"
+    },
+    {
+        "id": 9,
+        "titulo": "Ceremonia Ancestral Quechua",
+        "descripcion": "Participa en una ceremonia tradicional guiada por líderes espirituales de la comunidad Quechua.",
+        "imagen": "./img/eventos/taller_cosmovision.png",
+        "fecha": "2024-08-15",
+        "tipo": "ceremonia",
+        "ubicacion": "valencia"
+    }
+]

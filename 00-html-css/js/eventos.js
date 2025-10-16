@@ -1,99 +1,3 @@
-// Datos de ejemplo para los eventos
-const eventosData = [
-  {
-    id: 1,
-    titulo: "Charla: cosmovisión Quechua",
-    descripcion: "Disfruta de una jornada llena de música tradicional andina con artistas invitados de Perú, Bolivia y Ecuador.",
-    imagen: "./img/eventos/taller_cosmovision.png",
-    fecha: "2024-07-05",
-    tipo: "charla",
-    ubicacion: "madrid"
-  },
-  {
-    id: 2,
-    titulo: "Taller de Música Andina",
-    descripcion: "Participa en un taller práctico de música andina, donde aprenderás sobre los instrumentos tradicionales.",
-    imagen: "./img/eventos/taller_musica_andina.png",
-    fecha: "2024-07-10",
-    tipo: "taller",
-    ubicacion: "barcelona"
-  },
-  {
-    id: 3,
-    titulo: "Proyección Documental",
-    descripcion: "Descubre la historia y cultura a través de documentales sobre los pueblos indígenas de América Latina.",
-    imagen: "./img/eventos/taller_cosmovision.png",
-    fecha: "2024-07-15",
-    tipo: "cultural",
-    ubicacion: "madrid"
-  },
-  {
-    id: 4,
-    titulo: "Mercado Artesanal Quechua",
-    descripcion: "Encuentra piezas únicas de artesanía tradicional. Textiles, cerámicas y arte hecho a mano.",
-    imagen: "./img/eventos/taller_musica_andina.png",
-    fecha: "2024-07-20",
-    tipo: "mercado",
-    ubicacion: "valencia"
-  },
-  {
-    id: 5,
-    titulo: "Danza y Música en Vivo",
-    descripcion: "Disfruta de espectáculos de música y danza andina. Artistas de Perú, Bolivia y Ecuador.",
-    imagen: "./img/eventos/taller_cosmovision.png",
-    fecha: "2024-07-25",
-    tipo: "musical",
-    ubicacion: "madrid"
-  },
-  {
-    id: 6,
-    titulo: "Taller de Idioma Quechua",
-    descripcion: "Iniciación al idioma quechua para principiantes. Aprende frases básicas y la estructura del idioma.",
-    imagen: "./img/eventos/taller_musica_andina.png",
-    fecha: "2024-08-01",
-    tipo: "taller",
-    ubicacion: "barcelona"
-  },
-  {
-    id: 7,
-    titulo: "Exposición de Arte Indígena",
-    descripcion: "Muestra de arte contemporáneo y tradicional de artistas indígenas de toda América Latina.",
-    imagen: "./img/eventos/taller_cosmovision.png",
-    fecha: "2024-08-05",
-    tipo: "cultural",
-    ubicacion: "sevilla"
-  },
-  {
-    id: 8,
-    titulo: "Festival Gastronómico Andino",
-    descripcion: "Degusta los sabores de la cocina andina preparada por chefs especializados en gastronomía tradicional.",
-    imagen: "./img/eventos/taller_musica_andina.png",
-    fecha: "2024-08-10",
-    tipo: "gastronomico",
-    ubicacion: "madrid"
-  },
-  {
-    id: 9,
-    titulo: "Ceremonia Ancestral Quechua",
-    descripcion: "Participa en una ceremonia tradicional guiada por líderes espirituales de la comunidad Quechua.",
-    imagen: "./img/eventos/taller_cosmovision.png",
-    fecha: "2024-08-15",
-    tipo: "ceremonia",
-    ubicacion: "valencia"
-  }
-];
-
-// Variables de estado
-let paginaActual = 1;
-const eventosPorPagina = 6;
-let eventosFiltrados = [...eventosData];
-let filtroActivo = {
-  busqueda: "",
-  fecha: null,
-  tipo: null,
-  ubicacion: null
-};
-
 // Función para renderizar eventos
 const renderizarEventos = () => {
   const container = document.querySelector('.event-cards-container');
@@ -102,6 +6,7 @@ const renderizarEventos = () => {
   // Calcular índices
   const inicio = (paginaActual - 1) * eventosPorPagina;
   const fin = inicio + eventosPorPagina;
+  console.log('Eventos filtrados:', eventosFiltrados);
   const eventosAPaginar = eventosFiltrados.slice(inicio, fin);
 
   // Limpiar contenedor
@@ -204,13 +109,16 @@ const scrollToSection = () => {
 
 // Función para filtrar eventos
 const filtrarEventos = () => {
+  if (eventosData.length === 0) {
+    console.warn('No hay eventos disponibles para filtrar');
+    return;
+  }
+
   eventosFiltrados = eventosData.filter(evento => {
     // Filtro de búsqueda
     if (filtroActivo.busqueda) {
       const busqueda = filtroActivo.busqueda.toLowerCase();
-      const coincide = 
-        evento.titulo.toLowerCase().includes(busqueda) ||
-        evento.descripcion.toLowerCase().includes(busqueda);
+      const coincide = evento.titulo.toLowerCase().includes(busqueda) || evento.descripcion.toLowerCase().includes(busqueda);
       if (!coincide) return false;
     }
 
@@ -263,11 +171,51 @@ const limpiarFiltros = () => {
   filtrarEventos();
 }
 
+// Variables de estado
+let paginaActual = 1;
+const eventosPorPagina = 6;
+let eventosData = [];
+let eventosFiltrados = [];
+
+let filtroActivo = {
+  busqueda: "",
+  fecha: null,
+  tipo: null,
+  ubicacion: null
+};
+
+// Función para recuperar los eventos desde el archivo data.json
+const fetchEventos = async () => {
+  try {
+    const response = await fetch("./js/data.json");
+    if (!response.ok) {
+      throw new Error(`Error HTTP: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error al cargar los eventos:', error);
+    return [];
+  }
+};
+
+// Inicializar datos y renderizar
+const inicializarEventos = async () => {
+  eventosData = await fetchEventos();
+  eventosFiltrados = [...eventosData];
+  paginaActual = 1;
+  renderizarEventos();
+  configurarEventListeners();
+};
+
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-  // Renderizar eventos iniciales
-  renderizarEventos();
+  // Inicializar eventos (cargar desde JSON)
+  inicializarEventos();
+});
 
+// Configurar event listeners de búsqueda y filtros
+const configurarEventListeners = () => {
   // Búsqueda
   const searchInput = document.getElementById('search-input');
   const searchButton = document.getElementById('search-button');
@@ -318,4 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (clearFiltersBtn) {
     clearFiltersBtn.addEventListener('click', limpiarFiltros);
   }
-});
+};
+
+

@@ -112,6 +112,7 @@
       </section>
       <section id="search-section">
         <div class="search-container">
+          <form action="" method="post">
           <div class="search-input-wrapper">
             <span class="search-icon">
               <svg class="h-5 w-5 text-slate-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -123,8 +124,12 @@
               id="search-input"
               placeholder="Buscar eventos, cultura, noticias..."
             />
+          <button id="search-button" type="submit" >Buscar</button>
           </div>
-          <button id="search-button">Buscar</button>
+
+          </form>
+
+
           <div class="filters-container">
             <p class="filters-label">Filtros rápidos</p>
             <div class="filters-list" id="filters" name="filters">
@@ -274,5 +279,6 @@
       </ul>
       <p>&copy; 2025 Día del Indio. Todos los derechos reservados.</p>
     </footer>
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>
