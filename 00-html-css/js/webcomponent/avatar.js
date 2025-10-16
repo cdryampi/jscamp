@@ -4,7 +4,59 @@ class IndioAvatar extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
     
+    createServiceUrl(service, username) {
+        if (!service || !username) return 'https://unavatar.io/github/cdryampi';
+        let url = `https://unavatar.io/${service}/${username}`;
+        return url;
+    }
+
+    getTextDescription(service, username) {
+        switch (service) {
+            case 'github':
+                return {
+                    label: 'Desarrollado por',
+                    link: `https://github.com/${username}`,
+                    display: `@${username}`
+                }
+            case 'x':
+                return {
+                    label: 'Sígueme en X',
+                    link: `https://x.com/${username}`,
+                    display: `@${username}`
+                }
+            case 'linkedin':
+                return {
+                    label: 'Conéctate en LinkedIn',
+                    link: `https://www.linkedin.com/in/${username}`,
+                    display: username
+                }
+            case 'twitter':
+                return {
+                    label: 'Sígueme en Twitter',
+                    link: `https://twitter.com/${username}`,
+                    display: `@${username}`
+                }
+            case 'facebook':
+                return {
+                    label: 'Conéctate en Facebook',
+                    link: `https://www.facebook.com/${username}`,
+                    display: username
+                }
+            default:
+                return {
+                    label: 'Desarrollado por',
+                    link: `https://github.com/${username}`,
+                    display: `@${username}`
+                }
+        }
+    }
+
     render() {
+        const service = this.getAttribute('service') ?? 'github';
+        const username = this.getAttribute('username') ?? 'cdryampi';
+        const imageUrl = this.createServiceUrl(service, username);
+        const serviceInfo = this.getTextDescription(service, username);
+        this.getServiceInfo = () => serviceInfo;
         this.shadowRoot.innerHTML = `
             <style>
                 .avatar-container {
@@ -62,20 +114,18 @@ class IndioAvatar extends HTMLElement {
             
             <div class="avatar-container">
                 <img 
-                    src="https://unavatar.io/github/cdryampi" 
-                    alt="Avatar de cdryampi" 
+                    src="${imageUrl}" 
+                    alt="Avatar de ${username}" 
                     class="avatar-image"
                 />
                 <div class="avatar-info">
-                    <p class="avatar-label">Desarrollado por</p>
+                    <p class="avatar-label">${serviceInfo.label}</p>
                     <a 
-                        href="https://github.com/cdryampi" 
+                        href="${serviceInfo.link}" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         class="avatar-link"
-                    >
-                        @cdryampi
-                    </a>
+                    >${serviceInfo.display}</a>
                 </div>
             </div>
         `;
