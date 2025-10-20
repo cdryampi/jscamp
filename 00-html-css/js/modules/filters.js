@@ -10,41 +10,51 @@
  */
 export const aplicarFiltros = (eventos, filtros) => {
   console.log('Aplicando filtros:', filtros, 'a', eventos.length, 'eventos');
-  let resultado = [...eventos];
+  
+  // ⚠️ NO usar [...eventos], usar filter directo para mantener referencias
+  let resultado = eventos.filter(evento => {
+    // Filtro por búsqueda
+    if (filtros.busqueda && filtros.busqueda.trim() !== '') {
+      const busqueda = filtros.busqueda.toLowerCase().trim();
+      const coincide = 
+        evento.nombre?.toLowerCase().includes(busqueda) ||
+        evento.descripcion?.toLowerCase().includes(busqueda) ||
+        evento.titulo?.toLowerCase().includes(busqueda) ||
+        evento.ubicacion?.toLowerCase().includes(busqueda);
+      
+      if (!coincide) return false;
+    }
 
-  // Filtro por búsqueda
-  if (filtros.busqueda && filtros.busqueda.trim() !== '') {
-    const busqueda = filtros.busqueda.toLowerCase().trim();
-    resultado = resultado.filter(evento =>
-      evento.nombre?.toLowerCase().includes(busqueda) ||
-      evento.descripcion?.toLowerCase().includes(busqueda) ||
-      evento.titulo?.toLowerCase().includes(busqueda) ||
-      evento.ubicacion?.toLowerCase().includes(busqueda)
-    );
-  }
+    // Filtro por tipo de evento
+    if (filtros.tipo.length > 0 && filtros.tipo !== '') {
+      const tiposFiltro = filtros.tipo.split(',');
+      const tiposEvento = evento.tipo || [];
+      
+      const coincide = tiposFiltro.some(tipoFiltro =>
+        tiposEvento.some(t => t.toLowerCase() === tipoFiltro.toLowerCase())
+      );
+      
+      if (!coincide) return false;
+    }
 
-  // Filtro por tipo de evento
-  if (filtros.tipo && filtros.tipo !== '') {
-    resultado = resultado.filter(evento =>
-      evento.tipo?.toLowerCase() === filtros.tipo.toLowerCase() ||
-      evento.categoria?.toLowerCase() === filtros.tipo.toLowerCase()
-    );
-  }
+    // Filtro por ubicación
+    if (filtros.ubicacion && filtros.ubicacion !== '') {
+      if (!evento.ubicacion?.toLowerCase().includes(filtros.ubicacion.toLowerCase())) {
+        return false;
+      }
+    }
 
-  // Filtro por ubicación
-  if (filtros.ubicacion && filtros.ubicacion !== '') {
-    resultado = resultado.filter(evento =>
-      evento.ubicacion?.toLowerCase().includes(filtros.ubicacion.toLowerCase())
-    );
-  }
+    // Filtro por fecha/mes
+    if (filtros.fecha && filtros.fecha !== '') {
+      const coincide = 
+        evento.fecha?.toLowerCase().includes(filtros.fecha.toLowerCase()) ||
+        evento.mes?.toLowerCase() === filtros.fecha.toLowerCase();
+      
+      if (!coincide) return false;
+    }
 
-  // Filtro por fecha/mes
-  if (filtros.fecha && filtros.fecha !== '') {
-    resultado = resultado.filter(evento =>
-      evento.fecha?.toLowerCase().includes(filtros.fecha.toLowerCase()) ||
-      evento.mes?.toLowerCase() === filtros.fecha.toLowerCase()
-    );
-  }
+    return true;
+  });
 
   console.log('Eventos filtrados:', resultado.length);
   return resultado;

@@ -5,8 +5,10 @@
         "descripcion": "Disfruta de una jornada llena de música tradicional andina con artistas invitados de Perú, Bolivia y Ecuador.",
         "imagen": "./img/eventos/taller_cosmovision.png",
         "fecha": "2024-07-05",
-        "tipo": "charla",
-        "ubicacion": "madrid"
+        "tipo": ["cultural", "musical", "taller"],
+        "ubicacion": "madrid",
+        "precio": "1",
+        "visitado": false
     },
     {
         "id": 2,
@@ -14,8 +16,10 @@
         "descripcion": "Participa en un taller práctico de música andina, donde aprenderás sobre los instrumentos tradicionales.",
         "imagen": "./img/eventos/taller_musica_andina.png",
         "fecha": "2024-07-10",
-        "tipo": "taller",
-        "ubicacion": "barcelona"
+        "tipo": ["taller", "musical", "cultural"],
+        "ubicacion": "barcelona",
+        "precio": "1",
+        "visitado": false
     },
     {
         "id": 3,
@@ -23,8 +27,10 @@
         "descripcion": "Descubre la historia y cultura a través de documentales sobre los pueblos indígenas de América Latina.",
         "imagen": "./img/eventos/taller_cosmovision.png",
         "fecha": "2024-07-15",
-        "tipo": "cultural",
-        "ubicacion": "madrid"
+        "tipo": ["cultural", "audiovisual", "educativo"],
+        "ubicacion": "madrid",
+        "precio": "2",
+        "visitado": false
     },
     {
         "id": 4,
@@ -32,8 +38,10 @@
         "descripcion": "Encuentra piezas únicas de artesanía tradicional. Textiles, cerámicas y arte hecho a mano.",
         "imagen": "./img/eventos/taller_musica_andina.png",
         "fecha": "2024-07-20",
-        "tipo": "mercado",
-        "ubicacion": "valencia"
+        "tipo": ["cultural", "artesania", "mercado"],
+        "ubicacion": "valencia",
+        "precio": "1",
+        "visitado": false
     },
     {
         "id": 5,
@@ -41,8 +49,10 @@
         "descripcion": "Disfruta de espectáculos de música y danza andina. Artistas de Perú, Bolivia y Ecuador.",
         "imagen": "./img/eventos/taller_cosmovision.png",
         "fecha": "2024-07-25",
-        "tipo": "musical",
-        "ubicacion": "madrid"
+        "tipo": ["musical", "cultural", "espectaculo"],
+        "ubicacion": "madrid",
+        "precio": "1",
+        "visitado": false
     },
     {
         "id": 6,
@@ -50,8 +60,10 @@
         "descripcion": "Iniciación al idioma quechua para principiantes. Aprende frases básicas y la estructura del idioma.",
         "imagen": "./img/eventos/taller_musica_andina.png",
         "fecha": "2024-08-01",
-        "tipo": "taller",
-        "ubicacion": "barcelona"
+        "tipo": ["taller", "educativo", "cultural"],
+        "ubicacion": "barcelona",
+        "precio": "2",
+        "visitado": false
     },
     {
         "id": 7,
@@ -59,8 +71,10 @@
         "descripcion": "Muestra de arte contemporáneo y tradicional de artistas indígenas de toda América Latina.",
         "imagen": "./img/eventos/taller_cosmovision.png",
         "fecha": "2024-08-05",
-        "tipo": "cultural",
-        "ubicacion": "sevilla"
+        "tipo": ["cultural", "artes", "exposicion"],
+        "ubicacion": "sevilla",
+        "precio": "3",
+        "visitado": false
     },
     {
         "id": 8,
@@ -68,8 +82,10 @@
         "descripcion": "Degusta los sabores de la cocina andina preparada por chefs especializados en gastronomía tradicional.",
         "imagen": "./img/eventos/taller_musica_andina.png",
         "fecha": "2024-08-10",
-        "tipo": "gastronomico",
-        "ubicacion": "madrid"
+        "tipo": ["gastronomico", "cultural", "festival"],
+        "ubicacion": "madrid",
+        "precio": "4",
+        "visitado": false
     },
     {
         "id": 9,
@@ -77,7 +93,21 @@
         "descripcion": "Participa en una ceremonia tradicional guiada por líderes espirituales de la comunidad Quechua.",
         "imagen": "./img/eventos/taller_cosmovision.png",
         "fecha": "2024-08-15",
-        "tipo": "ceremonia",
-        "ubicacion": "valencia"
+        "tipo": ["ceremonia", "cultural", "espiritual"],
+        "ubicacion": "valencia",
+        "precio": "4",
+        "visitado": false
+    },
+    {
+        "id": 10,
+        "titulo": "Conferencia sobre Derechos Indígenas",
+        "descripcion": "Analiza la situación actual de los derechos de los pueblos indígenas en América Latina con expertos en la materia.",
+        "imagen": "./img/eventos/taller_musica_andina.png",
+        "fecha": "2024-08-20",
+        "tipo": ["charla", "cultural", "conferencia"],
+        "ubicacion": "barcelona",
+        "precio": "2",
+        "visitado": false
     }
+
 ]

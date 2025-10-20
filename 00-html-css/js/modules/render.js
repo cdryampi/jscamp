@@ -3,14 +3,22 @@
  */
 
 const EVENTOS_POR_PAGINA = 6;
+let actualizarEstadoCallback = null;
 
 /**
  * Renderiza los eventos en el DOM
  * @param {Array} eventos - Array de eventos a renderizar
  * @param {number} pagina - Número de página actual
+ * @param {Function} onEstadoVisitadoChange - Callback para actualizar estado
  */
-export const renderizarEventos = (eventos, pagina = 1) => {
+
+export const renderizarEventos = (eventos, pagina = 1, onEstadoVisitadoChange = null) => {
   console.log('📋 Renderizando', eventos.length, 'eventos - página:', pagina);
+  
+  // Guardar el callback para usarlo en el listener
+  if (onEstadoVisitadoChange) {
+    actualizarEstadoCallback = onEstadoVisitadoChange;
+  }
   
   const contenedor = document.getElementById('eventos-container');
   
@@ -28,7 +36,6 @@ export const renderizarEventos = (eventos, pagina = 1) => {
   if (eventosPagina.length === 0) {
     contenedor.innerHTML = '<div class="no-results"><p>No se encontraron eventos que coincidan con los filtros.</p></div>';
     
-    // Limpiar paginación
     const paginacionContainer = document.getElementById('pagination');
     if (paginacionContainer) {
       paginacionContainer.innerHTML = '';
@@ -37,30 +44,69 @@ export const renderizarEventos = (eventos, pagina = 1) => {
   }
 
   contenedor.innerHTML = eventosPagina.map(evento => `
-    <article class="evento-card">
-      ${evento.imagen ? `
-        <div class="card-image">
-          <img src="${evento.imagen}" alt="${evento.nombre || evento.titulo}" loading="lazy">
-        </div>
-      ` : ''}
-      <div class="evento-info">
-        <h3 class="evento-titulo">${evento.nombre || evento.titulo}</h3>
-        <div class="evento-meta">
-          ${evento.fecha ? `<p class="evento-fecha">📅 ${evento.fecha}</p>` : ''}
-          ${evento.categoria || evento.tipo ? `<span class="evento-categoria">${evento.categoria || evento.tipo}</span>` : ''}
-        </div>
-        ${evento.descripcion ? `<p class="evento-descripcion">${evento.descripcion}</p>` : ''}
-        ${evento.ubicacion ? `<p class="evento-ubicacion">📍 ${evento.ubicacion}</p>` : ''}
-        ${evento.precio !== undefined ? `<p class="evento-precio">${evento.precio === 0 || evento.precio === 'Gratis' ? 'Gratis' : `${evento.precio}€`}</p>` : ''}
-        <div class="card-actions">
-          <button class="btn-detalles" data-id="${evento.id}">Ver detalles</button>
-        </div>
-      </div>
-    </article>
+    <indio-card
+      id="${evento.id}"
+      imageUrl="${evento.imagen}"
+      titulo="${evento.nombre || evento.titulo}"
+      fecha="${evento.fecha}"
+      tipo="${evento.categoria || evento.tipo}"
+      descripcion="${evento.descripcion}"
+      ubicacion="${evento.ubicacion}"
+      precio="${evento.precio}"
+      visitado="${evento.visitado || false}"
+    ></indio-card>
   `).join('');
 
   console.log('✓', eventosPagina.length, 'eventos renderizados');
+  
+  // Configurar listener para eventos visitado-changed
+  configurarListenerVisitado(contenedor);
+  
   actualizarPaginacion(eventos.length, pagina);
+};
+
+/**
+ * Configura el listener para eventos visitado-changed
+ * @param {HTMLElement} contenedor - Contenedor de eventos
+ */
+const configurarListenerVisitado = (contenedor) => {
+  // Remover listener anterior si existe
+  contenedor.removeEventListener('visitado-changed', handleVisitadoChanged);
+  
+  // Agregar nuevo listener
+  contenedor.addEventListener('visitado-changed', handleVisitadoChanged);
+};
+
+/**
+ * Manejador del evento visitado-changed
+ * @param {CustomEvent} e - Evento custom
+ */
+const handleVisitadoChanged = (e) => {
+  const { id } = e.detail;
+  console.log(`📢 Evento visitado-changed recibido para ID: ${id}`);
+  
+  if (actualizarEstadoCallback) {
+    actualizarEstadoCallback(id);
+  } else {
+    console.warn('⚠ No hay callback configurado para actualizar estado');
+  }
+};
+
+/**
+ * Carga el estado de visitados desde localStorage
+ * @param {Array} eventos - Array de eventos a actualizar
+ */
+export const cargarEstadoVisitados = (eventos) => {
+  const visitados = JSON.parse(localStorage.getItem('eventosVisitados') || '[]');
+  
+  eventos.forEach(evento => {
+    if (visitados.includes(evento.id)) {
+      evento.visitado = true;
+    }
+  });
+  
+  console.log('📂 Cargados', visitados.length, 'eventos visitados desde localStorage');
+  return eventos;
 };
 
 /**
@@ -77,7 +123,6 @@ const actualizarPaginacion = (totalEventos, paginaActual) => {
     return;
   }
 
-  // Limpiar contenedor
   paginacionContainer.innerHTML = '';
 
   if (totalPaginas <= 1) {
@@ -85,11 +130,9 @@ const actualizarPaginacion = (totalEventos, paginaActual) => {
     return;
   }
 
-  // Crear wrapper
   const wrapper = document.createElement('div');
   wrapper.className = 'pagination-wrapper';
 
-  // Botón Anterior
   const btnAnterior = document.createElement('button');
   btnAnterior.className = 'btn-pagination';
   btnAnterior.disabled = paginaActual === 1;
@@ -97,7 +140,6 @@ const actualizarPaginacion = (totalEventos, paginaActual) => {
   btnAnterior.dataset.pagina = paginaActual - 1;
   wrapper.appendChild(btnAnterior);
 
-  // Números de página
   const maxBotones = 5;
   let inicio = Math.max(1, paginaActual - Math.floor(maxBotones / 2));
   let fin = Math.min(totalPaginas, inicio + maxBotones - 1);
@@ -147,13 +189,11 @@ const actualizarPaginacion = (totalEventos, paginaActual) => {
     wrapper.appendChild(btnUltimo);
   }
 
-  // Info de página
   const info = document.createElement('span');
   info.className = 'pagination-info';
   info.innerHTML = `Página <strong>${paginaActual}</strong> de <strong>${totalPaginas}</strong>`;
   wrapper.appendChild(info);
 
-  // Botón Siguiente
   const btnSiguiente = document.createElement('button');
   btnSiguiente.className = 'btn-pagination';
   btnSiguiente.disabled = paginaActual === totalPaginas;
@@ -185,7 +225,6 @@ export const configurarPaginacion = (onPageChange) => {
       console.log('📄 Cambiando a página:', nuevaPagina);
       onPageChange(nuevaPagina);
       
-      // Scroll suave al contenedor de eventos
       const contenedor = document.getElementById('eventos-container');
       if (contenedor) {
         contenedor.scrollIntoView({ behavior: 'smooth', block: 'start' });

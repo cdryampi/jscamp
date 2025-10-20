@@ -34,8 +34,8 @@ multimedia:
 
 
 ## Ejercicios adicionales:
-- Hacer funcionar las card como webcomponents.
-- modificar los datos de eventos.json una array el `tipo` para pensar mejor el filtro.
-- Darle una vuelta al filtro por titulo.
-- Añadir un funcionalidad a la card de evento para poder marcar como `visitado` o `favorito`.
-- Mejorar la paginación de los eventos.
+- [x] Hacer funcionar las card como webcomponents.
+- [x] Modificar los datos de eventos.json una array el `tipo` para pensar mejor el filtro. Solo había que hacer un split en el tipo y luego un some y si concide aplicando un map para recorrer los tipos.
+- [x] Darle una vuelta al filtro por titulo.
+- [x] Añadir un funcionalidad a la card de evento para poder marcar como `visitado` o `favorito`.
+- [x] Mejorar la paginación de los eventos.
