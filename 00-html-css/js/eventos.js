@@ -1,7 +1,7 @@
 import { fetchEventos } from './modules/fetch-data.js';
 import { aplicarFiltros, configurarFiltros } from './modules/filters.js';
 import { renderizarEventos, configurarPaginacion, cargarEstadoVisitados } from './modules/render.js';
-
+import { setLocalStorage, KEY_EVENTO } from "./modules/localStorage.js";
 // Estado global
 let eventosData = [];
 let eventosFiltrados = [];

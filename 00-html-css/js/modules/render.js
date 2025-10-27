@@ -2,6 +2,7 @@
  * Módulo para renderizar eventos
  */
 
+
 const EVENTOS_POR_PAGINA = 6;
 let actualizarEstadoCallback = null;
 
@@ -54,6 +55,7 @@ export const renderizarEventos = (eventos, pagina = 1, onEstadoVisitadoChange = 
       ubicacion="${evento.ubicacion}"
       precio="${evento.precio}"
       visitado="${evento.visitado || false}"
+      viewmode="card"
     ></indio-card>
   `).join('');
 
@@ -78,13 +80,12 @@ const configurarListenerVisitado = (contenedor) => {
 };
 
 /**
- * Manejador del evento visitado-changed
+ * Manejador del evento visitado-changed.
  * @param {CustomEvent} e - Evento custom
  */
 const handleVisitadoChanged = (e) => {
   const { id } = e.detail;
   console.log(`📢 Evento visitado-changed recibido para ID: ${id}`);
-  
   if (actualizarEstadoCallback) {
     actualizarEstadoCallback(id);
   } else {
