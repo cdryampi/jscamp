@@ -1,11 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/styles.css" />
-    <meta name="description" content="Web sobre la cultura indígena y la hermandad de nativa americana con la europea hispana." />
-    <title>Día del indio</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Descubre y participa en eventos culturales indígenas. Celebraciones, talleres y conferencias sobre culturas ancestrales de América Latina." />
+    <meta name="keywords" content="eventos indígenas, cultura quechua, cultura mapuche, eventos culturales, América Latina" />
+    <meta name="author" content="JSCamp" />
+    
+    <!-- Prevenir flash de tema incorrecto -->
+    <script>
+      // Detectar y aplicar tema antes de que se renderice la página
+      (function() {
+        const theme = localStorage.getItem('theme') || 
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.classList.add(theme);
+      })();
+    </script>
+    
+    <title>Eventos Culturales Indígenas | JSCamp</title>
+    <link rel="icon" type="image/x-icon" href="./assets/favicon/indio.png" />
   </head>
   <body>
     <div id="root"></div>

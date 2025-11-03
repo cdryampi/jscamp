@@ -1,0 +1,265 @@
+.hero {
+  position: relative;
+  padding: var(--space-10) 0;
+  background: linear-gradient(135deg, var(--brand-ultra-soft) 0%, var(--surface) 100%);
+  overflow: hidden;
+  transition: background var(--transition-base);
+}
+
+.heroContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .heroContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* === CONTENT === */
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--brand-soft);
+  color: var(--brand-strong);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  width: fit-content;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.heroBadge svg {
+  width: 16px;
+  height: 16px;
+}
+
+.heroTitle {
+  font-size: var(--font-size-5xl);
+  line-height: 1.1;
+  margin: 0;
+  animation: fadeInUp 0.6s ease-out 0.1s backwards;
+}
+
+.heroTitleHighlight {
+  color: var(--brand);
+  display: block;
+}
+
+.heroDescription {
+  font-size: var(--font-size-lg);
+  color: var(--text-muted);
+  line-height: var(--line-height-relaxed);
+  max-width: 550px;
+  margin: 0;
+  animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+.heroActions {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  animation: fadeInUp 0.6s ease-out 0.3s backwards;
+}
+
+.heroPrimaryButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+  background: var(--brand);
+  color: var(--white);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px hsl(30 90% 55% / 0.3);
+}
+
+.heroPrimaryButton svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-fast);
+}
+
+.heroPrimaryButton:hover {
+  background: var(--brand-strong);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px hsl(30 90% 55% / 0.4);
+}
+
+.heroPrimaryButton:hover svg {
+  transform: translateX(4px);
+}
+
+.heroSecondaryButton {
+  padding: var(--space-4) var(--space-6);
+  background: transparent;
+  color: var(--brand);
+  border: 2px solid var(--brand);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  transition: all var(--transition-fast);
+}
+
+.heroSecondaryButton:hover {
+  background: var(--brand-ultra-soft);
+  transform: translateY(-2px);
+}
+
+/* === STATS === */
+.heroStats {
+  display: flex;
+  gap: var(--space-8);
+  margin-top: var(--space-4);
+  animation: fadeInUp 0.6s ease-out 0.4s backwards;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.statNumber {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--brand);
+}
+
+.statLabel {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === IMAGE === */
+.heroImage {
+  position: relative;
+  animation: fadeInRight 0.8s ease-out 0.3s backwards;
+}
+
+.heroImageWrapper {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  aspect-ratio: 4/3;
+}
+
+.heroImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroImageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--brand) 0%, transparent 50%);
+  opacity: 0.1;
+}
+
+/* Decorative circles */
+.heroDecoCircle1,
+.heroDecoCircle2 {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  opacity: 0.3;
+  z-index: -1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.heroDecoCircle1 {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  right: -50px;
+}
+
+.heroDecoCircle2 {
+  width: 200px;
+  height: 200px;
+  bottom: -50px;
+  left: -30px;
+  animation-delay: -3s;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--space-6) 0;
+  }
+
+  .heroTitle {
+    font-size: var(--font-size-3xl);
+  }
+
+  .heroDescription {
+    font-size: var(--font-size-base);
+  }
+
+  .heroActions {
+    flex-direction: column;
+  }
+
+  .heroPrimaryButton,
+  .heroSecondaryButton {
+    width: 100%;
+    text-align: center;
+  }
+
+  .heroStats {
+    gap: var(--space-6);
+  }
+
+  .statNumber {
+    font-size: var(--font-size-2xl);
+  }
+}
