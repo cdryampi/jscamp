@@ -10,13 +10,10 @@
     <meta name="author" content="JSCamp" />
     
     <!-- Prevenir flash de tema incorrecto -->
-    <script>
+    <script type="module" src="./src/utils/theme.js">
       // Detectar y aplicar tema antes de que se renderice la página
-      (function() {
-        const theme = localStorage.getItem('theme') || 
-          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.classList.add(theme);
-      })();
+      import { applyInitialTheme } from './src/utils/theme.js';
+      applyInitialTheme();
     </script>
     
     <title>Eventos Culturales Indígenas | JSCamp</title>

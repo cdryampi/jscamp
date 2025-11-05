@@ -1,9 +1,9 @@
 import { HiSun, HiMoon } from 'react-icons/hi';
-import { useTheme } from '../../../hooks/useTheme';
+import { useThemeContext } from '../../../context/ThemeContext';
 import styles from './ThemeToggle.module.css';
 
 export const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useThemeContext();
 
   return (
     <button

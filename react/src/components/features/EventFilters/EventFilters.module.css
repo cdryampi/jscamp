@@ -4,6 +4,12 @@
   padding: var(--space-6);
   box-shadow: var(--shadow);
   margin-bottom: var(--space-6);
+  border: 2px solid var(--border);
+}
+
+html.dark .filters,
+:root.dark .filters {
+  border-color: var(--brand-soft);
 }
 
 .filterHeader {

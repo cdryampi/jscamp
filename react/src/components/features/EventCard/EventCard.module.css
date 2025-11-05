@@ -1,23 +1,26 @@
 .eventoCard {
   background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .eventoCard:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--brand-soft);
 }
 
 /* Modo oscuro - sombra más sutil */
+html.dark .eventoCard:hover,
 :root.dark .eventoCard:hover {
   box-shadow: var(--shadow-xl);
+  border-color: var(--brand-soft);
 }
 
 .cardImage {
@@ -85,10 +88,11 @@
   padding: var(--space-1) var(--space-3);
   background: var(--brand-ultra-soft);
   color: var(--brand-strong);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   text-transform: capitalize;
+  border: 1px solid var(--brand-soft);
 }
 
 .eventoDescripcion {
@@ -130,27 +134,29 @@
   padding: var(--space-3);
   background: var(--brand);
   color: var(--white);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
+  border: 2px solid transparent;
 }
 
 .btnDetalles:hover {
   background: var(--brand-strong);
   transform: translateY(-1px);
+  border-color: var(--brand-strong);
 }
 
 .btnVisitado {
   width: 100%;
   padding: var(--space-3);
-  background: var(--sky-500);
+  background: var(--visited);
   color: var(--white);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   cursor: default;
@@ -158,6 +164,12 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
+  border: 2px solid var(--visited-dark);
+}
+
+html.dark .btnVisitado {
+  background: var(--visited-dark);
+  border-color: var(--visited);
 }
 
 .btnVisitado svg {

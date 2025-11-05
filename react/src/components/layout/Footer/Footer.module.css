@@ -3,10 +3,10 @@
   color: var(--surface);
   padding: var(--space-10) 0 var(--space-6);
   margin-top: auto;
-  transition: background-color var(--transition-base);
 }
 
 /* En modo oscuro, usar un tono diferente */
+html.dark .footer,
 :root.dark .footer {
   background: hsl(220 15% 8%);
   border-top: 1px solid var(--border);
@@ -47,6 +47,7 @@
   color: var(--surface);
 }
 
+html.dark .logo,
 :root.dark .logo {
   color: var(--heading);
 }
