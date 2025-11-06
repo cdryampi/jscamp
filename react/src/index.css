@@ -1,7 +1,13 @@
 /* ============================================================================
    ESTILOS GLOBALES - Día del Indio (React Version)
    Solo estilos base - Los componentes usan CSS Modules
-   ============================================================================ */
+   ================================================
+ */
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---break---
 
 /* RESET BÁSICO */
 * {
@@ -33,16 +39,16 @@ body {
   font-family: "Inter Variable", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   min-height: 100vh;
   line-height: 1.6;
-  background: var(--white);
-  color: var(--text);
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* DARK MODE - Body background and text */
 html.dark body,
 :root.dark body {
-  background: var(--white);
-  color: var(--text);
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
 /* ROOT CONTAINER */
@@ -52,56 +58,231 @@ html.dark body,
   flex-direction: column;
 }
 
-/* INDICADOR VISUAL DE MODO OSCURO - Borde superior visible */
-html.dark body::before,
-:root.dark body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--brand) 0%, var(--brand-strong) 100%);
-  z-index: 9999;
-  animation: darkModeActive 2s ease-in-out infinite alternate;
+/* ---break---
+ */
+
+/* ---break---
+ */
+
+@layer base {
+  :root {
+    /* Colores base cálidos */
+    --background: 35 30% 97%;
+    --foreground: 30 10% 15%;
+    
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 30 10% 15%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 10% 15%;
+    
+    /* Primary - Terracota */
+    --primary: 25 75% 55%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Beige */
+    --secondary: 35 25% 90%;
+    --secondary-foreground: 30 10% 20%;
+    
+    /* Muted */
+    --muted: 35 20% 92%;
+    --muted-foreground: 30 8% 45%;
+    
+    /* Accent */
+    --accent: 30 30% 88%;
+    --accent-foreground: 30 10% 20%;
+    
+    /* Destructive */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Border */
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 25 75% 55%;
+    
+    /* Radius */
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark mode con mejor contraste */
+    --background: 240 10% 8%;
+    --foreground: 0 0% 95%;
+    
+    --card: 240 10% 12%;
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 240 10% 12%;
+    --popover-foreground: 0 0% 95%;
+    
+    --primary: 25 75% 55%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 240 10% 20%;
+    --secondary-foreground: 0 0% 95%;
+    
+    --muted: 240 10% 18%;
+    --muted-foreground: 240 5% 65%;
+    
+    --accent: 240 10% 22%;
+    --accent-foreground: 0 0% 95%;
+    
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 95%;
+    
+    --border: 240 10% 25%;
+    --input: 240 10% 25%;
+    --ring: 25 75% 55%;
+  }
 }
 
-@keyframes darkModeActive {
-  from {
-    opacity: 0.8;
+@layer base {
+  * {
+    @apply border-border;
   }
-  to {
-    opacity: 1;
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold;
   }
 }
 
-/* ESTILOS DE DEBUG PARA DARK MODE - Remover después de verificar */
-html.dark {
-  outline: 3px solid var(--brand) !important;
-  outline-offset: -3px;
+/* Utilidades personalizadas para el estilo cartoon/cálido */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .shadow-warm {
+    box-shadow: 0 4px 12px rgba(210, 105, 30, 0.15);
+  }
+  
+  .shadow-warm-lg {
+    box-shadow: 0 10px 24px rgba(210, 105, 30, 0.2);
+  }
+  
+  .bg-texture {
+    background-image: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(210, 105, 30, 0.02) 10px,
+        rgba(210, 105, 30, 0.02) 20px
+      );
+  }
 }
 
-html.dark::after {
-  content: '🌙 DARK MODE ACTIVE';
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--brand);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 12px;
-  z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  animation: pulse 2s ease-in-out infinite;
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: "Poppins", system-ui, sans-serif;
+  --font-serif: "Lora", Georgia, serif;
+  
+  /* Colores cálidos coherentes con las ilustraciones */
+  --color-terracota-50: #fff5e6;
+  --color-terracota-100: #ffe4cc;
+  --color-terracota-200: #ffd9b3;
+  --color-terracota-300: #ffcc99;
+  --color-terracota-400: #ffb366;
+  --color-terracota-500: #ff9a33;
+  --color-terracota-600: #ff8000;
+  --color-terracota-700: #d2691e;
+  --color-terracota-800: #b8573e;
+  --color-terracota-900: #8b4513;
+  --color-terracota-950: #6b4423;
+  
+  --color-beige-50: #fefdf8;
+  --color-beige-100: #faebd7;
+  --color-beige-200: #f5deb3;
+  --color-beige-300: #f0e68c;
+  --color-beige-400: #deb887;
+  --color-beige-500: #d2b48c;
+  --color-beige-600: #bc8f8f;
+  --color-beige-700: #a0826d;
+  --color-beige-800: #8b7355;
+  --color-beige-900: #6b5d4f;
+  
+  --color-naranja-50: #fff7ed;
+  --color-naranja-100: #ffedd5;
+  --color-naranja-200: #fed7aa;
+  --color-naranja-300: #fdba74;
+  --color-naranja-400: #fb923c;
+  --color-naranja-500: #f97316;
+  --color-naranja-600: #ea580c;
+  --color-naranja-700: #c2410c;
+  --color-naranja-800: #9a3412;
+  --color-naranja-900: #7c2d12;
+  
+  --color-oliva-50: #f7f8f3;
+  --color-oliva-100: #e8ebd8;
+  --color-oliva-200: #d4dab4;
+  --color-oliva-300: #b8c186;
+  --color-oliva-400: #9daa5e;
+  --color-oliva-500: #6b8e23;
+  --color-oliva-600: #5a7a1e;
+  --color-oliva-700: #4a6419;
+  --color-oliva-800: #3d5316;
+  --color-oliva-900: #334513;
+  
+  /* Shadcn UI Variables */
+  --color-background: oklch(98% 0.01 40);
+  --color-foreground: oklch(20% 0.01 30);
+  --color-card: oklch(100% 0 0);
+  --color-card-foreground: oklch(20% 0.01 30);
+  --color-popover: oklch(100% 0 0);
+  --color-popover-foreground: oklch(20% 0.01 30);
+  --color-primary: oklch(60% 0.15 35);
+  --color-primary-foreground: oklch(100% 0 0);
+  --color-secondary: oklch(95% 0.02 40);
+  --color-secondary-foreground: oklch(25% 0.01 30);
+  --color-muted: oklch(96% 0.01 40);
+  --color-muted-foreground: oklch(50% 0.01 30);
+  --color-accent: oklch(94% 0.02 35);
+  --color-accent-foreground: oklch(25% 0.01 30);
+  --color-destructive: oklch(55% 0.20 20);
+  --color-destructive-foreground: oklch(100% 0 0);
+  --color-border: oklch(88% 0.01 35);
+  --color-input: oklch(88% 0.01 35);
+  --color-ring: oklch(60% 0.15 35);
+  
+  --radius: 0.75rem;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+@variant dark {
+  --color-background: oklch(15% 0.01 30);
+  --color-foreground: oklch(96% 0.01 35);
+  --color-card: oklch(18% 0.01 30);
+  --color-card-foreground: oklch(96% 0.01 35);
+  --color-popover: oklch(18% 0.01 30);
+  --color-popover-foreground: oklch(96% 0.01 35);
+  --color-primary: oklch(65% 0.15 35);
+  --color-primary-foreground: oklch(15% 0.01 30);
+  --color-secondary: oklch(22% 0.02 30);
+  --color-secondary-foreground: oklch(96% 0.01 35);
+  --color-muted: oklch(20% 0.01 30);
+  --color-muted-foreground: oklch(65% 0.01 35);
+  --color-accent: oklch(24% 0.02 32);
+  --color-accent-foreground: oklch(96% 0.01 35);
+  --color-destructive: oklch(60% 0.18 20);
+  --color-destructive-foreground: oklch(96% 0.01 35);
+  --color-border: oklch(28% 0.01 30);
+  --color-input: oklch(28% 0.01 30);
+  --color-ring: oklch(65% 0.15 35);
+}
+
+/* Estilos base */
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
 }

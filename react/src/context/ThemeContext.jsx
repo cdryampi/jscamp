@@ -29,24 +29,10 @@ export const ThemeProvider = ({ children }) => {
     
     // Guardar en localStorage
     localStorage.setItem('theme', theme);
-    
-    // Debug: Verificar las variables CSS
-    const styles = getComputedStyle(root);
-    const bgColor = styles.getPropertyValue('--white');
-    const textColor = styles.getPropertyValue('--text');
-    
-    console.log('🎨 Tema aplicado:', theme);
-    console.log('📦 Clase HTML:', root.className);
-    console.log('🎨 --white:', bgColor);
-    console.log('📝 --text:', textColor);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => {
-      const newTheme = prevTheme === 'light' ? 'dark' : 'light';
-      console.log('🔄 Cambiando tema de', prevTheme, 'a', newTheme);
-      return newTheme;
-    });
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
 
   return (

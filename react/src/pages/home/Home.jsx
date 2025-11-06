@@ -5,6 +5,7 @@ import { Hero } from '../../components/features/Hero';
 import { EventFilters } from '../../components/features/EventFilters';
 import { useState } from 'react';
 import styles from './Home.module.css';
+import { Button } from "@/components/ui/button"
 
 export const Home = () => {
   const { eventos, loading, error } = useEventos();
@@ -136,6 +137,11 @@ export const Home = () => {
             ))}
           </div>
         )}
+      </section>
+      <section className='flex min-h-svh flex-col items-center justify-center'>
+        <Button className='mt-10' variant="outline" size="lg" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          Volver arriba
+        </Button>
       </section>
     </div>
   );

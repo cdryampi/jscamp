@@ -1,77 +1,130 @@
-import { FaCalendarAlt, FaMapMarkerAlt, FaCheck } from 'react-icons/fa';
-import styles from './EventCard.module.css';
+import { Link } from 'react-router-dom';
+import { FaMapMarkerAlt, FaCalendarAlt, FaCheckCircle } from 'react-icons/fa';
+import { 
+  Card, 
+  CardContent, 
+  CardFooter, 
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardImage,
+  CardBadge,
+  CardStat,
+  CardPrice
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
-export const EventCard = ({ evento, visitado, onVisitar }) => {
-  const handleClick = () => {
-    if (!visitado) {
-      onVisitar?.(evento.id);
-    }
+export const EventCard = ({ evento }) => {
+  const {
+    id,
+    titulo,
+    slug,
+    descripcion,
+    imagen,
+    fechaFormateada,
+    ubicacion,
+    precio,
+    precioNumerico,
+    tipo = [],
+    visitado = false,
+  } = evento;
+
+  const categoriaPrincipal = tipo[0] || 'evento';
+
+  // Mapeo de categorías a variantes de badge
+  const badgeVariantMap = {
+    cultural: 'primary',
+    musical: 'warning',
+    taller: 'success',
+    gastronomia: 'warning',
+    conferencia: 'primary',
+    festival: 'warning',
+    danza: 'primary',
+    ceremonial: 'primary',
+    artesanía: 'success',
+    'gastronomía': 'warning',
+    default: 'default',
   };
 
+  const badgeVariant = badgeVariantMap[categoriaPrincipal] || badgeVariantMap.default;
+
   return (
-    <article className={styles.eventoCard}>
-      {evento.imagen && (
-        <div className={styles.cardImage}>
-          <img src={evento.imagen} alt={evento.titulo} loading="lazy" />
+    <Card hoverable className="h-full">
+      {/* Imagen con overlay y badges */}
+      <CardImage 
+        src={imagen}
+        alt={titulo}
+        aspectRatio="4/3"
+        onError={(e) => {
+          e.target.src = 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&h=600&fit=crop';
+        }}
+      >
+        <div className="flex flex-wrap gap-2">
+          <CardBadge variant={badgeVariant} className="capitalize">
+            {categoriaPrincipal}
+          </CardBadge>
+          {tipo.slice(1, 2).map((tag, index) => (
+            <CardBadge key={index} variant="secondary" className="capitalize">
+              {tag}
+            </CardBadge>
+          ))}
         </div>
-      )}
-      
-      <div className={styles.eventoInfo}>
-        <h3 className={styles.eventoTitulo}>{evento.titulo}</h3>
+      </CardImage>
+
+      {/* Header con título y descripción */}
+      <CardHeader className="!p-5 !pb-3">
+        <CardTitle className="!mb-2">
+          {titulo}
+        </CardTitle>
+        <CardDescription className="!m-0">
+          {descripcion}
+        </CardDescription>
+      </CardHeader>
+
+      {/* Contenido con información del evento */}
+      <CardContent className="!px-5 !py-3 !space-y-2">
+        <CardStat 
+          icon={FaCalendarAlt}
+          value={fechaFormateada}
+        />
         
-        <div className={styles.eventoMeta}>
-          {evento.fecha && (
-            <p className={styles.eventoFecha}>
-              <FaCalendarAlt className={styles.icon} />
-              {evento.fecha}
-            </p>
-          )}
-          
-          {evento.tipo && (
-            <div className={styles.categoriaContainer}>
-              {evento.tipo.map((tipo, index) => (
-                <span key={index} className={styles.categoria}>
-                  {tipo}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
+        <CardStat 
+          icon={FaMapMarkerAlt}
+          value={ubicacion}
+        />
+      </CardContent>
 
-        {evento.descripcion && (
-          <p className={styles.eventoDescripcion}>{evento.descripcion}</p>
-        )}
+      {/* Footer con precio y botón */}
+      <CardFooter className="!p-5 !pt-4 border-t gap-3 flex-col items-stretch">
+        <CardPrice 
+          price={precioNumerico || precio}
+          free={precio === 'Gratis'}
+          className="w-full"
+        />
 
-        {evento.ubicacion && (
-          <p className={styles.eventoUbicacion}>
-            <FaMapMarkerAlt className={styles.icon} />
-            {evento.ubicacion}
-          </p>
-        )}
-
-        {evento.precio !== undefined && (
-          <p className={styles.eventoPrecio}>
-            {evento.precio === 0 || evento.precio === 'Gratis' 
-              ? 'Gratis' 
-              : evento.precio}
-          </p>
-        )}
-
-        <div className={styles.cardActions}>
-          <button
-            className={visitado ? styles.btnVisitado : styles.btnDetalles}
-            onClick={handleClick}
+        {visitado ? (
+          <Button 
+            variant="success"
+            size="default"
+            className="w-full"
+            disabled
           >
-            {visitado ? (
-              <>
-                <FaCheck /> Visitado
-              </>
-            ) : (
-              'Ver detalles'
-            )}
-          </button>
-        </div>
-      </div>
-    </article>
+            <FaCheckCircle className="w-4 h-4" />
+            Visitado
+          </Button>
+        ) : (
+          <Button 
+            asChild
+            variant="default"
+            size="default"
+            className="w-full"
+          >
+            <Link to={`/eventos/${slug || id}`} className='dark:text-white'>
+              Ver detalles
+            </Link>
+          </Button>
+        )}
+      </CardFooter>
+    </Card>
   );
 };

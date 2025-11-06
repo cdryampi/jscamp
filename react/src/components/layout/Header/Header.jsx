@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { IoEarthSharp } from 'react-icons/io5';
-import { ThemeToggle } from '../../common/ThemeToggle';
+import { ModeToggle } from '../../mode-toggle';
 import styles from './Header.module.css';
 
 export const Header = () => {
@@ -53,7 +53,7 @@ export const Header = () => {
 
         {/* Acciones del header */}
         <div className={styles.headerActions}>
-          <ThemeToggle />
+          <ModeToggle />
           
           {/* Botón hamburguesa (móvil) */}
           <button

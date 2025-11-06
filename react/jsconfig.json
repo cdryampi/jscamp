@@ -1,0 +1,12 @@
+// Source - https://stackoverflow.com/questions/76689520/can-shadcn-ui-be-installed-for-vite-react-with-javascript-and-not-typescript
+// Posted by Ganesh Danuri
+// Retrieved 2025-11-06, License - CC BY-SA 4.0
+
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
