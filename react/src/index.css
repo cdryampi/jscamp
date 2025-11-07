@@ -44,12 +44,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* DARK MODE - Body background and text */
-html.dark body,
-:root.dark body {
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
-}
 
 /* ROOT CONTAINER */
 #root {

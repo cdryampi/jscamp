@@ -1,13 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from './Header/Header';
 import { Footer } from './Footer/Footer';
-import styles from './Layout.module.css';
 
 export const Layout = () => {
   return (
-    <div className={styles.layout}>
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950">
       <Header />
-      <main className={styles.main}>
+      <main className="flex-1 container mx-auto px-4 py-8">
         <Outlet />
       </main>
       <Footer />

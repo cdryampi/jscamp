@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { IoEarthSharp } from 'react-icons/io5';
-import styles from './Footer.module.css';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -32,97 +31,109 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className={styles.footer}>
-      <div className={`${styles.container} container`}>
-        {/* Sección principal del footer */}
-        <div className={styles.footerMain}>
-          {/* Columna de marca */}
-          <div className={styles.footerBrand}>
-            <div className={styles.logo}>
-              <IoEarthSharp className={styles.logoIcon} />
-              <span className={styles.logoText}>Cultura Indígena</span>
+    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <IoEarthSharp className="text-3xl text-primary" />
+              <span className="text-xl font-bold text-gray-900 dark:text-white">Cultura Indígena</span>
             </div>
-            <p className={styles.brandDescription}>
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 max-w-md">
               Conectando comunidades a través de eventos culturales indígenas.
               Celebrando tradiciones ancestrales de América Latina.
             </p>
-            <div className={styles.socialLinks}>
+            <div className="flex gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
                   <a
                     key={social.name}
                     href={social.url}
-                    className={styles.socialLink}
+                    className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.name}
                   >
-                    <Icon />
+                    <Icon className="text-lg" />
                   </a>
                 );
               })}
             </div>
           </div>
 
-          {/* Columnas de enlaces */}
-          <div className={styles.footerLinks}>
-            <div className={styles.footerColumn}>
-              <h3 className={styles.columnTitle}>Eventos</h3>
-              <ul className={styles.linkList}>
-                {footerLinks.eventos.map((link) => (
-                  <li key={link.path}>
-                    <Link to={link.path} className={styles.link}>
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">Eventos</h3>
+            <ul className="space-y-3">
+              {footerLinks.eventos.map((link) => (
+                <li key={link.path}>
+                  <Link 
+                    to={link.path} 
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className={styles.footerColumn}>
-              <h3 className={styles.columnTitle}>Recursos</h3>
-              <ul className={styles.linkList}>
-                {footerLinks.recursos.map((link) => (
-                  <li key={link.path}>
-                    <Link to={link.path} className={styles.link}>
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">Recursos</h3>
+            <ul className="space-y-3">
+              {footerLinks.recursos.map((link) => (
+                <li key={link.path}>
+                  <Link 
+                    to={link.path} 
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className={styles.footerColumn}>
-              <h3 className={styles.columnTitle}>Empresa</h3>
-              <ul className={styles.linkList}>
-                {footerLinks.empresa.map((link) => (
-                  <li key={link.path}>
-                    <Link to={link.path} className={styles.link}>
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">Empresa</h3>
+            <ul className="space-y-3">
+              {footerLinks.empresa.map((link) => (
+                <li key={link.path}>
+                  <Link 
+                    to={link.path} 
+                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Sección inferior del footer */}
-        <div className={styles.footerBottom}>
-          <p className={styles.copyright}>
+        <div className="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-gray-600 dark:text-gray-400">
             © {currentYear} Cultura Indígena. Todos los derechos reservados.
           </p>
-          <div className={styles.footerBottomLinks}>
-            <Link to="/terminos" className={styles.bottomLink}>
+          <div className="flex items-center gap-4 text-sm">
+            <Link 
+              to="/terminos" 
+              className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+            >
               Términos de Uso
             </Link>
-            <span className={styles.separator}>•</span>
-            <Link to="/privacidad" className={styles.bottomLink}>
+            <span className="text-gray-400 dark:text-gray-600">•</span>
+            <Link 
+              to="/privacidad" 
+              className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+            >
               Privacidad
             </Link>
-            <span className={styles.separator}>•</span>
-            <Link to="/cookies" className={styles.bottomLink}>
+            <span className="text-gray-400 dark:text-gray-600">•</span>
+            <Link 
+              to="/cookies" 
+              className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+            >
               Cookies
             </Link>
           </div>
