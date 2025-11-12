@@ -10,11 +10,11 @@ function Card({
     <div
       data-slot="card"
       className={cn(
-        "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100",
-        "flex flex-col rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg",
-        "transition-all duration-300 ease-out",
-        hoverable && "hover:shadow-xl hover:-translate-y-1 hover:border-primary/50 dark:hover:border-primary/50",
-        "group relative overflow-hidden",
+        "bg-white! dark:bg-gray-800! text-gray-900! dark:text-gray-100!",
+        "flex! flex-col! rounded-2xl! border! border-gray-200! dark:border-gray-700! shadow-lg!",
+        "transition-all! duration-300! ease-out!",
+        hoverable && "hover:shadow-xl! hover:-translate-y-1! hover:border-primary/50! dark:hover:border-primary/50!",
+        "group! relative! overflow-hidden!",
         className
       )}
       {...props} 
@@ -30,7 +30,7 @@ function CardHeader({
     <div
       data-slot="card-header"
       className={cn(
-        "flex flex-col gap-2 p-6 pb-4",
+        "flex! flex-col! gap-2! p-6! pb-4!",
         className
       )}
       {...props} 
@@ -47,11 +47,11 @@ function CardTitle({
     <Component
       data-slot="card-title"
       className={cn(
-        "font-serif text-xl font-bold leading-tight tracking-tight",
-        "text-gray-900 dark:text-white",
-        "group-hover:text-orange-600 dark:group-hover:text-orange-400",
-        "transition-colors duration-300",
-        "line-clamp-2 min-h-14",
+        "font-serif! text-xl! font-bold! leading-tight! tracking-tight!",
+        "text-gray-900! dark:text-white!",
+        "group-hover:text-orange-600! dark:group-hover:text-orange-400!",
+        "transition-colors! duration-300!",
+        "line-clamp-2! min-h-14!",
         className
       )}
       {...props} 
@@ -67,7 +67,7 @@ function CardDescription({
     <p
       data-slot="card-description"
       className={cn(
-        "text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-2",
+        "text-gray-600! dark:text-gray-400! text-sm! leading-relaxed! line-clamp-2!",
         className
       )}
       {...props} 
@@ -83,8 +83,8 @@ function CardAction({
     <div
       data-slot="card-action"
       className={cn(
-        "absolute top-4 right-4 z-10",
-        "transition-transform duration-300 group-hover:scale-110",
+        "absolute! top-4! right-4! z-10!",
+        "transition-transform! duration-300! group-hover:scale-110!",
         className
       )}
       {...props} 
@@ -100,7 +100,7 @@ function CardContent({
     <div 
       data-slot="card-content" 
       className={cn(
-        "px-6 py-4 space-y-3 flex-1",
+        "px-6! py-4! space-y-3! flex-1!",
         className
       )} 
       {...props} 
@@ -116,7 +116,7 @@ function CardFooter({
     <div
       data-slot="card-footer"
       className={cn(
-        "flex items-center gap-3 p-6 pt-4 mt-auto",
+        "flex! items-center! gap-3! p-6! pt-4! mt-auto!",
         className
       )}
       {...props} 
@@ -138,8 +138,8 @@ function CardImage({
   return (
     <div 
       className={cn(
-        "relative overflow-hidden bg-gray-200 dark:bg-gray-700",
-        "rounded-t-2xl",
+        "relative! overflow-hidden! bg-gray-200! dark:bg-gray-700!",
+        "rounded-t-2xl!",
         className
       )}
       style={{ aspectRatio }}
@@ -147,16 +147,16 @@ function CardImage({
       <img 
         src={src}
         alt={alt}
-        className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+        className="w-full! h-full! object-cover! transition-transform! duration-500! ease-out! group-hover:scale-110!"
         loading="lazy"
         onError={onError}
         {...props}
       />
       {overlayGradient && (
-        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute! inset-0! bg-linear-to-t! from-black/60! via-black/20! to-transparent!" />
       )}
       {children && (
-        <div className="absolute top-4 left-4 z-10">
+        <div className="absolute! top-4! left-4! z-10!">
           {children}
         </div>
       )}
@@ -171,19 +171,19 @@ function CardBadge({
   ...props
 }) {
   const variants = {
-    default: "bg-white/95 dark:bg-gray-900/95 text-gray-900 dark:text-white border border-gray-200/50 dark:border-gray-700/50",
-    primary: "bg-orange-600 text-white dark:bg-orange-500 dark:text-white border-0",
-    secondary: "bg-gray-100/95 text-gray-900 dark:bg-gray-800/95 dark:text-white border border-gray-200/50 dark:border-gray-700/50",
-    success: "bg-green-600 text-white dark:bg-green-500 dark:text-white border-0",
-    warning: "bg-orange-600 text-white dark:bg-orange-500 dark:text-white border-0",
+    default: "bg-white/95! dark:bg-gray-900/95! text-gray-900! dark:text-white! border! border-gray-200/50! dark:border-gray-700/50!",
+    primary: "bg-orange-600! text-white! dark:bg-orange-500! dark:text-white! border-0!",
+    secondary: "bg-gray-100/95! text-gray-900! dark:bg-gray-800/95! dark:text-white! border! border-gray-200/50! dark:border-gray-700/50!",
+    success: "bg-green-600! text-white! dark:bg-green-500! dark:text-white! border-0!",
+    warning: "bg-orange-600! text-white! dark:bg-orange-500! dark:text-white! border-0!",
   };
 
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full px-3 py-1.5 text-xs font-semibold",
-        "shadow-md backdrop-blur-sm",
-        "transition-transform hover:scale-105",
+        "inline-flex! items-center! rounded-full! px-3! py-1.5! text-xs! font-semibold!",
+        "shadow-md! backdrop-blur-sm!",
+        "transition-transform! hover:scale-105!",
         variants[variant],
         className
       )}

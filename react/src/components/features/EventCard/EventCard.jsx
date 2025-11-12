@@ -60,11 +60,11 @@ export const EventCard = ({ evento }) => {
         }}
       >
         <div className="flex flex-wrap gap-2">
-          <CardBadge variant={badgeVariant} className="capitalize">
+          <CardBadge variant={badgeVariant} className="capitalize !p-1.5">
             {categoriaPrincipal}
           </CardBadge>
           {tipo.slice(1, 2).map((tag, index) => (
-            <CardBadge key={index} variant="secondary" className="capitalize">
+            <CardBadge key={index} variant="secondary" className="capitalize !p-1.5">
               {tag}
             </CardBadge>
           ))}

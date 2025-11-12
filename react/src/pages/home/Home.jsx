@@ -1,11 +1,17 @@
 import { useEventos } from '../../hooks/useEventos';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { usePagination } from '../../hooks/usePagination';
 import { EventCard } from '../../components/features/EventCard';
 import { Hero } from '../../components/features/Hero';
 import { EventFilters } from '../../components/features/EventFilters';
 import { useState } from 'react';
+import { HiRefresh, HiSearchCircle } from 'react-icons/hi';
 import styles from './Home.module.css';
 import { Button } from "@/components/ui/button"
+import { Pagination } from '../../components/features/Pagination';
+
+// Leer variable de entorno con valor por defecto
+const MAX_EVENTS = parseInt(import.meta.env.VITE_MAX_EVENTS_INDEX || '10', 10);
 
 export const Home = () => {
   const { eventos, loading, error } = useEventos();
@@ -54,6 +60,25 @@ export const Home = () => {
     return true;
   });
 
+  // Usar hook de paginación
+  const {
+    currentPage,
+    totalPages,
+    currentItems: eventosPaginados,
+    goToPage,
+    showing
+  } = usePagination(eventosFiltrados, MAX_EVENTS);
+
+  // Función para limpiar filtros
+  const limpiarFiltros = () => {
+    setFiltros({
+      categoria: 'todos',
+      ubicacion: 'todos',
+      precio: 'todos',
+      busqueda: ''
+    });
+  };
+
   if (loading) {
     return (
       <div className={styles.loadingContainer}>
@@ -87,11 +112,13 @@ export const Home = () => {
       <Hero />
 
       {/* Filtros y búsqueda */}
-      <section className={`${styles.filtersSection} container`}>
+      <section className={`${styles.filtersSection} container my-10!`}>
         <EventFilters 
-          filtros={filtros} 
-          setFiltros={setFiltros}
-          totalEventos={eventosFiltrados.length}
+          onSearchChange={(value) => setFiltros({ ...filtros, busqueda: value })}
+          onCategoriaChange={(value) => setFiltros({ ...filtros, categoria: value })}
+          onUbicacionChange={(value) => setFiltros({ ...filtros, ubicacion: value })}
+          onPrecioChange={(value) => setFiltros({ ...filtros, precio: value })}
+          totalResultados={eventosFiltrados.length}
         />
       </section>
 
@@ -104,38 +131,60 @@ export const Home = () => {
               : 'Todos los Eventos'}
           </h2>
           <p className={styles.eventosCount}>
-            {eventosFiltrados.length} {eventosFiltrados.length === 1 ? 'evento' : 'eventos'} encontrados
+            {eventosFiltrados.length > 0 ? (
+              <>
+                Mostrando {showing.from}-{showing.to} de {showing.total} {showing.total === 1 ? 'evento' : 'eventos'}
+                {totalPages > 1 && (
+                  <span className="text-muted-foreground! ml-2!">
+                    (Página {currentPage} de {totalPages})
+                  </span>
+                )}
+              </>
+            ) : (
+              '0 eventos encontrados'
+            )}
           </p>
         </div>
 
         {eventosFiltrados.length === 0 ? (
           <div className={styles.noResults}>
-            <span className={styles.noResultsIcon}>🔍</span>
-            <h3>No se encontraron eventos</h3>
-            <p>Intenta ajustar los filtros para ver más resultados</p>
-            <button 
-              className={styles.clearFiltersButton}
-              onClick={() => setFiltros({
-                categoria: 'todos',
-                ubicacion: 'todos',
-                precio: 'todos',
-                busqueda: ''
-              })}
+            <HiSearchCircle className="w-16! h-16! text-gray-400! dark:text-gray-600! mb-4!" />
+            <h3 className="text-xl! font-bold! text-foreground! mb-2! m-0! p-0!">No se encontraron eventos</h3>
+            <p className="text-muted-foreground! mb-4! m-0! p-0!">Intenta ajustar los filtros para ver más resultados</p>
+            <Button 
+              onClick={limpiarFiltros}
+              variant="outline"
+              size="lg"
+              className="mt-4!"
             >
+              <HiRefresh className="mr-2! h-4! w-4!" />
               Limpiar filtros
-            </button>
+            </Button>
           </div>
         ) : (
-          <div className={styles.eventosGrid}>
-            {eventosFiltrados.map((evento) => (
-              <EventCard
-                key={evento.id}
-                evento={evento}
-                visitado={visitados.includes(evento.id)}
-                onVisitar={handleVisitar}
-              />
-            ))}
-          </div>
+          <>
+            <div className={styles.eventosGrid}>
+              {eventosPaginados.map((evento) => (
+                <EventCard
+                  key={evento.id}
+                  evento={evento}
+                  visitado={visitados.includes(evento.id)}
+                  onVisitar={handleVisitar}
+                />
+              ))}
+            </div>
+            
+            {/* Paginación - Solo se muestra si hay más de una página */}
+            {totalPages > 1 && (
+              <div className="flex! justify-center! mt-12! mb-8!">
+                <Pagination 
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={goToPage}
+                />
+              </div>
+            )}
+          </>
         )}
       </section>
     </div>
