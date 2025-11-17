@@ -1,18 +1,19 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "src/index.js",
-      "use": "@vercel/node"
-    }
+  "rewrites": [
+    { "source": "/api/eventos/categorias", "destination": "/api/categorias" },
+    { "source": "/api/eventos/ubicaciones", "destination": "/api/ubicaciones" },
+    { "source": "/api/eventos", "destination": "/api/eventos" },
+    { "source": "/", "destination": "/api/index" }
   ],
-  "routes": [
+  "headers": [
     {
-      "src": "/(.*)",
-      "dest": "src/index.js"
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
