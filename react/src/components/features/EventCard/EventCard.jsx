@@ -13,6 +13,7 @@ import {
   CardPrice
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { getImageUrl } from '@/utils/imageUrl';
 
 export const EventCard = ({ evento }) => {
   const {
@@ -52,7 +53,7 @@ export const EventCard = ({ evento }) => {
     <Card hoverable className="h-full">
       {/* Imagen con overlay y badges */}
       <CardImage 
-        src={imagen}
+        src={getImageUrl(imagen)}
         alt={titulo}
         aspectRatio="4/3"
         onError={(e) => {

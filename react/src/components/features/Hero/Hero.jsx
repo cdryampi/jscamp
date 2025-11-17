@@ -76,7 +76,7 @@ export const Hero = () => {
             <div className="relative rounded-2xl! overflow-hidden shadow-2xl! hover:shadow-warm-xl! transition-shadow! duration-300! ring-1! ring-border/50!">
               <AspectRatio ratio={4/3}>
                 <img 
-                  src="/assets/images/hero/hero-cultura.jpg" 
+                  src="/assets/images/hero/hero-cultura.jpg"
                   alt="Eventos culturales indígenas"
                   className="w-full! h-full! object-cover! hover:scale-105! transition-transform! duration-700!"
                   onError={(e) => {
