@@ -12,7 +12,7 @@ const eventosService = {
   getEventos: async (params = {}) => {
     try {
       const response = await api.get('/api/eventos', { params });
-      return response.data || [];
+      return response?.data || [];
     } catch (error) {
       console.error('Error al obtener eventos:', error);
       throw error;
@@ -29,7 +29,7 @@ const eventosService = {
       const response = await api.get('/api/eventos', { 
         params: { id } 
       });
-      return response.data;
+      return response?.data?.[0] || null;
     } catch (error) {
       console.error(`Error al obtener evento ${id}:`, error);
       throw error;
@@ -46,7 +46,7 @@ const eventosService = {
       const response = await api.get('/api/eventos', { 
         params: { slug } 
       });
-      return response.data;
+      return response?.data?.[0] || null;
     } catch (error) {
       console.error(`Error al obtener evento ${slug}:`, error);
       throw error;
@@ -63,7 +63,7 @@ const eventosService = {
       const response = await api.get('/api/eventos', { 
         params: { categoria } 
       });
-      return response.data || [];
+      return response?.data || [];
     } catch (error) {
       console.error(`Error al obtener eventos de categoría ${categoria}:`, error);
       throw error;
@@ -80,7 +80,7 @@ const eventosService = {
       const response = await api.get('/api/eventos', { 
         params: { ubicacion } 
       });
-      return response.data || [];
+      return response?.data || [];
     } catch (error) {
       console.error(`Error al obtener eventos de ubicación ${ubicacion}:`, error);
       throw error;
@@ -96,7 +96,7 @@ const eventosService = {
       const response = await api.get('/api/eventos', { 
         params: { destacado: true } 
       });
-      return response.data || [];
+      return response?.data || [];
     } catch (error) {
       console.error('Error al obtener eventos destacados:', error);
       throw error;
@@ -110,7 +110,7 @@ const eventosService = {
   getCategorias: async () => {
     try {
       const response = await api.get('/api/categorias');
-      return response.data || [];
+      return response?.data || [];
     } catch (error) {
       console.error('Error al obtener categorías:', error);
       throw error;
@@ -124,7 +124,7 @@ const eventosService = {
   getUbicaciones: async () => {
     try {
       const response = await api.get('/api/ubicaciones');
-      return response.data || [];
+      return response?.data || [];
     } catch (error) {
       console.error('Error al obtener ubicaciones:', error);
       throw error;
